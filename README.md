@@ -1,40 +1,64 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+|  | Pemrograman Berbasis Framework 2024 |
+|--|--|
+| NIM |  2141720135 |
+| Nama |  Mutiara Devita Eka Putri |
+| Kelas | TI - 3A |
 
-## Getting Started
+Soal Praktikum 2
+1. Coba akses http://localhost:3000/login, dan klik tombol login. Kemudian lakukan refresh page berkali-kali (jika perlu restart npm run dev nya). Simpulkan apa yang terjadi ?
 
-First, run the development server:
+    Jawab :
+    
+    Ketika dilakukan refresh page berkali-kali pada saat status berhasil, maka akan muncul pesan "Yay, berhasil login!!!" dan pada saat logout maka akan muncul pesan "Anda telah logout!". Hal ini terjadi karena kita menggunakan Redux untuk menyimpan data login dan logout sehingga data tersebut tidak akan hilang ketika kita melakukan refresh page maupun melakukan restart npm run dev.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+2. Baris 25 dan 30 terdapat method parse(), apa yang terjadi jika kita tidak menggunakan method tersebut?
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+    Jawab :
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+    Jika tidak menggunakan method parse() pada baris 25 dan 30, maka teks HTML yang didefinisikan dalam variabel successAlert dan failedAlert akan ditampilkan sebagai string literal, bukan sebagai HTML yang diinterpretasikan.
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+Tugas (Pertanyaan Praktikum)
+1. Apa kegunaan dari kode ini import { useEffect } from "react"; Pada file pages/_app.tsx? jelaskan
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+    Jawab :
 
-## Learn More
+    Kode tersebut digunakan untuk menjalankan kode setelah component pertama kali dirender, menambahkan event listener, melakukan request data dari API, dan membersihkan event listener atau sumber daya lain saat component di-unmount.
 
-To learn more about Next.js, take a look at the following resources:
+2. Jika pada file pages/_app.tsx kita tidak menggunakan useEffect (menghapus baris 3, dan baris 9-11), apa yang akan terjadi?
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+    Jawab : 
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+    Menghapus useEffect pada file tersebut tidak akan menyebabkan error. Namum, fungsionalitas untuk menyimpan posisi scrollbar akan hilang.
 
-## Deploy on Vercel
+3. Mengapa di react/nextjs penulisan tag html untuk class, harus diganti menjadi className ?
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+    Jawab : 
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+    Karena react menggunakan camelCase untuk penamaan properti JavaScript. Sehingga penggunaan className lebih konsisten dengan gaya penamaan react. Penggunaan className ini juga menghindari konflik penamaan dan meningkatkan kompatibilitas, penggunaan className memungkinkan React untuk mentranspile nama class dengan benar dan memastikan kompatibilitas dengan browser yang lebih lama. Dan juga penggunaan className memungkinkan React untuk mengintegrasikan dengan CSS Modules dengan mudah.
+
+
+4. Apakah store pada nextjs bisa menyimpan banyak redux reducer?
+
+    Jawab : 
+
+    Bisa, Store pada Next.js dapat menyimpan banyak Redux reducer.
+
+5. Jelaskan kegunaan dari file store.js!
+
+    Jawab :
+    File store.js digunakan untuk menyimpan dan mengelola data pada aplikasi web. Fungsinya tergantung pada framework atau library yang digunakan, tetapi pada umumnya file ini memiliki kegunaan untuk menyimpan data, mengakses data, memperbarui data, dan mengelola state aplikasi.
+
+6. Pada file pages/login.tsx, apa maksud dari kode ini ?
+const { isLogin } = useSelector((state) => state.auth);
+
+    Jawab :
+    
+    Kode tersebut mengambil nilai isLogin dari state auth di Redux store dan menyimpannya dalam variabel isLogin. Variabel isLogin kemudian digunakan dalam component pages/login.tsx untuk menentukan apakah pengguna sudah login atau belum.
+
+7. Pada file pages/counter.tsx, apa maksud dari kode ini?
+const {totalCounter} = useSelector((state) => state.counter);
+
+    Jawab :
+
+    Kode tersebut mengambil nilai totalCounter dari state counter di Redux store dan menyimpannya dalam variabel totalCounter. Variabel totalCounter kemudian dapat digunakan dalam component pages/counter.tsx untuk menampilkan nilai counter.
